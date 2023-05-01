@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.conways_game_of_life.app.rest"},{"l":"com.conways_game_of_life.app.rest.controller"},{"l":"com.conways_game_of_life.app.rest.model"}];updateSearchResults();

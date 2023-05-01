@@ -19,6 +19,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * The GameControllerImplTest class tests the implementation of the
+ * GameControllerImpl class and all the public method it provides.
+ */
 class GameControllerImplTest {
   GameController gameController;
   @Mock

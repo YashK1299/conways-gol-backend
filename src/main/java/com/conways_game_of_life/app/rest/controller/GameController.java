@@ -5,7 +5,7 @@ import com.conways_game_of_life.app.rest.model.GameBoard;
 import com.conways_game_of_life.app.rest.model.GameModel;
 
 /**
- * Represents the Controller for Conway's Game of Life
+ * The GameController interface represents the Controller for Conway's Game of Life
  * It handles the working of the Model {@link GameModel} by parsing the game properties and
  * user actions to the model and conveys action outcomes to the user in some form.
  */

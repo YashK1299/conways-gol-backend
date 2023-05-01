@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * This class extends the Random class and represents a mocked random generator to test the model.
+ */
 class CustomRandom extends Random {
   private boolean nextBoolean = true;
 
@@ -21,6 +24,10 @@ class CustomRandom extends Random {
   }
 }
 
+/**
+ * The GameModelImplTest class tests the implementation of the
+ * GameModelImpl class and all the public method it provides.
+ */
 class GameModelImplTest {
   Random randomMock;
   private GameModel emptyGame;

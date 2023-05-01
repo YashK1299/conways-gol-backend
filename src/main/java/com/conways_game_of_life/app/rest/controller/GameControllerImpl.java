@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Represents the Rest Controller for Conway's Game of Life
- * It exposes user actions through public GET and PUT API endpoints.
+ * The GameController class represents the Rest Controller for Conway's Game of Life
+ * It exposes user actions through public API endpoints.
  */
 @RestController
 @CrossOrigin(origins = "*")

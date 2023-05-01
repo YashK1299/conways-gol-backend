@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GameModel</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.conways_game_of_life.app.rest.model</a>
+</div>
+
+<h1>Coverage Summary for Class: GameModel (com.conways_game_of_life.app.rest.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">GameModel</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.conways_game_of_life.app.rest.model;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;/**
+<i class="no-highlight">4</i>&nbsp; * This interface represents a single game of Conway&#39;s Game of Life.
+<i class="no-highlight">5</i>&nbsp; * @see &lt;a href=&quot;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&quot;&gt;Conway&#39;s Game Of Life&lt;/a&gt;
+<i class="no-highlight">6</i>&nbsp; */
+<i class="no-highlight">7</i>&nbsp;public interface GameModel {
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;  /**
+<i class="no-highlight">10</i>&nbsp;   * Edits the size of the game board.
+<i class="no-highlight">11</i>&nbsp;   *
+<i class="no-highlight">12</i>&nbsp;   * @param rows the updated number of rows (rows &gt; 0).
+<i class="no-highlight">13</i>&nbsp;   * @param cols the updated number of columns (cols &gt; 0).
+<i class="no-highlight">14</i>&nbsp;   * @throws IllegalArgumentException if invalid values for rows and columns provided.
+<i class="no-highlight">15</i>&nbsp;   */
+<i class="no-highlight">16</i>&nbsp;  void editBoardSize(int rows, int cols) throws IllegalArgumentException;
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;  /**
+<i class="no-highlight">19</i>&nbsp;   * Get the current game board.
+<i class="no-highlight">20</i>&nbsp;   *
+<i class="no-highlight">21</i>&nbsp;   * @return the current game board matrix.
+<i class="no-highlight">22</i>&nbsp;   */
+<i class="no-highlight">23</i>&nbsp;  boolean[][] getBoard();
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;  /**
+<i class="no-highlight">26</i>&nbsp;   * Creates a random game board placing live cells randomly throughout the game board.
+<i class="no-highlight">27</i>&nbsp;   */
+<i class="no-highlight">28</i>&nbsp;  void randomBoard();
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;  /**
+<i class="no-highlight">31</i>&nbsp;   * Toggles a cell from live to dead and vice-versa.
+<i class="no-highlight">32</i>&nbsp;   *
+<i class="no-highlight">33</i>&nbsp;   * @param row the row in which the cell is present (0 &lt;= row &lt;= numRowsInBoard).
+<i class="no-highlight">34</i>&nbsp;   * @param col the column in which the cell is present (0 &lt;= col &lt;= numColsInBoard).
+<i class="no-highlight">35</i>&nbsp;   * @throws IllegalArgumentException if invalid values for row and col provided.
+<i class="no-highlight">36</i>&nbsp;   */
+<i class="no-highlight">37</i>&nbsp;  void toggleCell(int row, int col) throws IllegalArgumentException;
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;  /**
+<i class="no-highlight">40</i>&nbsp;   * Triggers evolution to next generation in the game.
+<i class="no-highlight">41</i>&nbsp;   */
+<i class="no-highlight">42</i>&nbsp;  void nextGeneration();
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;  /**
+<i class="no-highlight">45</i>&nbsp;   * Check if the game is over (reached extinction) or not.
+<i class="no-highlight">46</i>&nbsp;   *
+<i class="no-highlight">47</i>&nbsp;   * @return true if game reached extinction else false.
+<i class="no-highlight">48</i>&nbsp;   */
+<i class="no-highlight">49</i>&nbsp;  boolean isGameOver();
+<i class="no-highlight">50</i>&nbsp;
+<i class="no-highlight">51</i>&nbsp;  /**
+<i class="no-highlight">52</i>&nbsp;   * Resets the game board to an empty board keeping the previous number of rows and cols.
+<i class="no-highlight">53</i>&nbsp;   */
+<i class="no-highlight">54</i>&nbsp;  void resetBoard();
+<i class="no-highlight">55</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-01 16:25</div>
+</div>
+</body>
+</html>

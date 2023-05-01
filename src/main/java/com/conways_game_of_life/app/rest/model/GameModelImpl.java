@@ -11,15 +11,15 @@ import java.util.Random;
  * @see <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game Of Life</a>
  */
 public class GameModelImpl implements GameModel {
+  private final Random random;
   private boolean[][] gameBoard;
   private int population;
-  private final Random random;
 
   /**
    * This constructs an instance of the GameModelImpl.
    *
-   * @param rows the number of rows in the game board (rows > 0).
-   * @param cols the number of columns in the game board (cols > 0).
+   * @param rows   the number of rows in the game board (rows > 0).
+   * @param cols   the number of columns in the game board (cols > 0).
    * @param random the random value generator used to randomize board at any moment.
    * @throws IllegalArgumentException if invalid input provided.
    */
@@ -74,8 +74,7 @@ public class GameModelImpl implements GameModel {
         if ((row + i >= 0 && row + i < this.gameBoard.length)
             && (col + j >= 0 && col + j < this.gameBoard[0].length))
           aliveNeighbours += this.gameBoard[row + i][col + j] ? 1 : 0;
-    // Accounting for itself being counted as aliveNeighbours
-    aliveNeighbours -= this.gameBoard[row][col] ? 1 : 0;
+    aliveNeighbours -= this.gameBoard[row][col] ? 1 : 0; // Accounting for itself being counted as aliveNeighbours
     return aliveNeighbours;
   }
 
@@ -87,24 +86,17 @@ public class GameModelImpl implements GameModel {
     for (int row = 0; row < rows; row++) {
       for (int col = 0; col < cols; col++) {
         int aliveNeighbours = getAliveNeighbours(row, col);
-        // Implementing the Rules of Life:
-        // 1. Cell dies due to under population
-        if (this.gameBoard[row][col] && (aliveNeighbours < 2)) {
+        // Implementing Rules of Life:
+        if (this.gameBoard[row][col] && (aliveNeighbours < 2)) {// Cell dies due to under-population
           next_gen[row][col] = false;
           this.population -= 1;
-        }
-        // 2. Cell dies due to over population
-        else if (this.gameBoard[row][col] && (aliveNeighbours > 3)) {
+        } else if (this.gameBoard[row][col] && (aliveNeighbours > 3)) { // Cell dies due to over-population
           next_gen[row][col] = false;
           this.population -= 1;
-        }
-        // 3. A new cell is born
-        else if (!this.gameBoard[row][col] && (aliveNeighbours == 3)) {
+        } else if (!this.gameBoard[row][col] && (aliveNeighbours == 3)) { // New cell is born
           next_gen[row][col] = true;
           this.population += 1;
-        }
-        // 4. Remains the same
-        else
+        } else // Remains the same
           next_gen[row][col] = this.gameBoard[row][col];
       }
     }
@@ -125,9 +117,9 @@ public class GameModelImpl implements GameModel {
   @Override
   public String toString() {
     final StringBuilder sb = new StringBuilder("Game Model:\n");
-    for (int i = 0; i < this.gameBoard.length; i++) {
-      for (int j = 0; j < this.gameBoard[0].length; j++) {
-        if (this.gameBoard[i][j])
+    for (boolean[] rows : this.gameBoard) {
+      for (boolean cell : rows) {
+        if (cell)
           sb.append(" * ");
         else
           sb.append(" - ");
