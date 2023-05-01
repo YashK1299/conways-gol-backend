@@ -30,8 +30,8 @@ public interface GameModel {
   /**
    * Toggles a cell from live to dead and vice-versa.
    *
-   * @param row the row in which the cell is present (0 < row <= numRowsInBoard).
-   * @param col the column in which the cell is present (0 < col <= numColsInBoard).
+   * @param row the row in which the cell is present (0 <= row <= numRowsInBoard).
+   * @param col the column in which the cell is present (0 <= col <= numColsInBoard).
    * @throws IllegalArgumentException if invalid values for row and col provided.
    */
   void toggleCell(int row, int col) throws IllegalArgumentException;

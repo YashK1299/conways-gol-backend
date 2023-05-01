@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "0094a950-d5fb-4314-8195-6edb3b259b48",
+		"name": "conways_game_of_life_api_testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19335285"
+	},
+	"item": [
+		{
+			"name": "Edit Game Board Size",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rows\": 5,\n    \"cols\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/editGameBoardSize",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"editGameBoardSize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Random Game Board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/randomGame",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"randomGame"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Toggle Cell",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"row\": 1,\n    \"col\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/toggleCell",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"toggleCell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trigger Next Generation",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/nextGen",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"nextGen"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check is Game Over",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/isGameOver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"isGameOver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Game Board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/gameBoard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"gameBoard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Game Board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gameoflife/resetGame",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gameoflife",
+						"resetGame"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

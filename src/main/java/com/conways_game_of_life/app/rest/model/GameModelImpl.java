@@ -13,20 +13,26 @@ import java.util.Random;
 public class GameModelImpl implements GameModel {
   private boolean[][] gameBoard;
   private int population;
+  private final Random random;
 
   /**
    * This constructs an instance of the GameModelImpl.
    *
    * @param rows the number of rows in the game board (rows > 0).
    * @param cols the number of columns in the game board (cols > 0).
+   * @param random the random value generator used to randomize board at any moment.
    * @throws IllegalArgumentException if invalid input provided.
    */
-  public GameModelImpl(int rows, int cols) throws IllegalArgumentException {
+  public GameModelImpl(int rows, int cols, Random random) throws IllegalArgumentException {
+    if (random == null) {
+      throw new IllegalArgumentException("Null value provided for random generator");
+    }
     if (rows <= 0 || cols <= 0) {
       throw new IllegalArgumentException("Invalid value for rows or columns: " + rows + "," + cols);
     }
     this.gameBoard = new boolean[rows][cols];
     this.population = 0;
+    this.random = random;
   }
 
   @Override
@@ -45,10 +51,9 @@ public class GameModelImpl implements GameModel {
 
   @Override
   public void randomBoard() {
-    Random random = new Random();
     for (int i = 0; i < this.gameBoard.length; i++)
       for (int j = 0; j < this.gameBoard[0].length; j++) {
-        this.gameBoard[i][j] = random.nextBoolean();
+        this.gameBoard[i][j] = this.random.nextBoolean();
         this.population += this.gameBoard[i][j] ? 1 : 0;
       }
   }
@@ -83,7 +88,7 @@ public class GameModelImpl implements GameModel {
       for (int col = 0; col < cols; col++) {
         int aliveNeighbours = getAliveNeighbours(row, col);
         // Implementing the Rules of Life:
-        // 1. Cell is lonely and dies
+        // 1. Cell dies due to under population
         if (this.gameBoard[row][col] && (aliveNeighbours < 2)) {
           next_gen[row][col] = false;
           this.population -= 1;
@@ -117,4 +122,18 @@ public class GameModelImpl implements GameModel {
     this.population = 0;
   }
 
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder("Game Model:\n");
+    for (int i = 0; i < this.gameBoard.length; i++) {
+      for (int j = 0; j < this.gameBoard[0].length; j++) {
+        if (this.gameBoard[i][j])
+          sb.append(" * ");
+        else
+          sb.append(" - ");
+      }
+      sb.append("\n");
+    }
+    return sb.toString();
+  }
 }

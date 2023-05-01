@@ -3,8 +3,8 @@ package com.conways_game_of_life.app.rest.controller;
 import com.conways_game_of_life.app.rest.model.Cell;
 import com.conways_game_of_life.app.rest.model.GameBoard;
 import com.conways_game_of_life.app.rest.model.GameModel;
-import com.conways_game_of_life.app.rest.model.GameModelImpl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,16 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RequestMapping("/gameoflife")
 public class GameControllerImpl implements GameController {
-  static final int DEFAULT_GAME_BOARD_ROWS = 20;
-  static final int DEFAULT_GAME_BOARD_COLUMNS = 20;
   private final GameModel game;
 
   /**
    * This constructs an instance of the Rest Controller for Conway's Game Of Life
    * and sets up a default game for user to play.
+   *
+   * @param gameModel represents the model of conways game of life.
+   * @throws IllegalArgumentException if null model provided.
    */
-  public GameControllerImpl() {
-    this.game = new GameModelImpl(DEFAULT_GAME_BOARD_ROWS, DEFAULT_GAME_BOARD_COLUMNS);
+  @Autowired
+  public GameControllerImpl(GameModel gameModel) {
+    if (gameModel == null)
+      throw new IllegalArgumentException("Null model provided for game");
+    this.game = gameModel;
   }
 
   @GetMapping(value = "/")
@@ -43,7 +47,7 @@ public class GameControllerImpl implements GameController {
             \t GET /gameoflife/gameBoard,
             \t PUT /gameoflife/nextGen,
             \t GET /gameoflife/isGameOver,
-            \t GET /gameoflife/resetGame,""";
+            \t PUT /gameoflife/resetGame,""";
   }
 
   @Override
@@ -94,4 +98,8 @@ public class GameControllerImpl implements GameController {
     this.game.resetBoard();
   }
 
+  @Override
+  public String toString() {
+    return "Game Controller with: \n" + this.game;
+  }
 }
