@@ -36,8 +36,8 @@ class GameControllerImplTest {
 
   @Test
   void testConstructorWithNullModel() {
-    IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+    NullPointerException thrown = assertThrows(
+            NullPointerException.class,
             () -> new GameControllerImpl(null)
     );
     assertEquals(thrown.getMessage(), "Null model provided for game");
@@ -55,23 +55,23 @@ class GameControllerImplTest {
     assertEquals("""
             Welcome to Conway's Game of Life API.
              Endpoints available:
-            \t PUT /gameoflife/editGameBoardSize,
-            \t PUT /gameoflife/randomGame,
-            \t PUT /gameoflife/toggleCell,
-            \t GET /gameoflife/gameBoard,
-            \t PUT /gameoflife/nextGen,
-            \t GET /gameoflife/isGameOver,
-            \t PUT /gameoflife/resetGame,""", this.gameController.getPage());
+            PUT /gameoflife/editGameBoardSize,
+            PUT /gameoflife/randomGame,
+            PUT /gameoflife/toggleCell,
+            GET /gameoflife/gameBoard,
+            PUT /gameoflife/nextGen,
+            GET /gameoflife/isGameOver,
+            PUT /gameoflife/resetGame.""", this.gameController.getPage());
   }
 
   @Test
   void testEditGameBoardSizeWithNullOrInvalidValues() {
-    IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+    NullPointerException nullPointerException = assertThrows(
+            NullPointerException.class,
             () -> this.gameController.editGameBoardSize(null)
     );
-    assertEquals(thrown.getMessage(), "Invalid input: null");
-    thrown = assertThrows(
+    assertEquals(nullPointerException.getMessage(), "Null input Provided");
+    IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> this.gameController.editGameBoardSize(new GameBoard(0, 5))
     );
@@ -117,12 +117,12 @@ class GameControllerImplTest {
 
   @Test
   void testToggleCellWithInvalidValues() {
-    IllegalArgumentException thrown = assertThrows(
-            IllegalArgumentException.class,
+    NullPointerException nullExceptionThrown = assertThrows(
+            NullPointerException.class,
             () -> this.gameController.toggleCell(null)
     );
-    assertEquals(thrown.getMessage(), "Invalid input: null");
-    thrown = assertThrows(
+    assertEquals(nullExceptionThrown.getMessage(), "Null input provided");
+    IllegalArgumentException thrown = assertThrows(
             IllegalArgumentException.class,
             () -> this.gameController.toggleCell(new Cell(-5, 2))
     );

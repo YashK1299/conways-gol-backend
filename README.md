@@ -23,9 +23,9 @@ the in game functionality.
 ## Contents of the [repository](https://github.com/YashK1299/conways-gol-backend):
 * [Source Code](src/main/java/com/conways_game_of_life/app/rest)
 * [Unit Tests](src/test/java/com/conways_game_of_life/app/rest)
-* [Unit Tests Coverage Report](out/Unit Test Coverage Report)
+* [Unit Tests Coverage Report](out/coverage_report/index.html)
 * [Postman Collection](out/comway's_game_of_life_api_testing.postman_collection.json)
-* [Generated Javadoc](out/javadoc)
+* [Generated Javadoc](out/javadoc/index.html)
 * Find example Frontend(using React) code [here](https://github.com/YashK1299/conways-gol-ui)
 
 ## How to run:

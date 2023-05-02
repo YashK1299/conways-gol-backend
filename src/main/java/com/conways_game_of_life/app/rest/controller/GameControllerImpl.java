@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.apache.commons.lang3.Validate.notNull;
+
 /**
  * The GameController class represents the Rest Controller for Conway's Game of Life
  * It exposes user actions through public API endpoints.
@@ -31,8 +33,7 @@ public class GameControllerImpl implements GameController {
    */
   @Autowired
   public GameControllerImpl(GameModel gameModel) {
-    if (gameModel == null)
-      throw new IllegalArgumentException("Null model provided for game");
+    notNull(gameModel, "Null model provided for game");
     this.game = gameModel;
   }
 
@@ -41,19 +42,20 @@ public class GameControllerImpl implements GameController {
     return """
             Welcome to Conway's Game of Life API.
              Endpoints available:
-            \t PUT /gameoflife/editGameBoardSize,
-            \t PUT /gameoflife/randomGame,
-            \t PUT /gameoflife/toggleCell,
-            \t GET /gameoflife/gameBoard,
-            \t PUT /gameoflife/nextGen,
-            \t GET /gameoflife/isGameOver,
-            \t PUT /gameoflife/resetGame,""";
+            PUT /gameoflife/editGameBoardSize,
+            PUT /gameoflife/randomGame,
+            PUT /gameoflife/toggleCell,
+            GET /gameoflife/gameBoard,
+            PUT /gameoflife/nextGen,
+            GET /gameoflife/isGameOver,
+            PUT /gameoflife/resetGame.""";
   }
 
   @Override
   @PutMapping(value = "/editGameBoardSize")
   public void editGameBoardSize(@RequestBody GameBoard board) throws IllegalArgumentException {
-    if (board == null || board.rows() <= 0 || board.cols() <= 0) {
+    notNull(board, "Null input Provided");
+    if (board.rows() <= 0 || board.cols() <= 0) {
       throw new IllegalArgumentException("Invalid input: " + board);
     }
     this.game.editBoardSize(board.rows(), board.cols());
@@ -68,7 +70,8 @@ public class GameControllerImpl implements GameController {
   @Override
   @PutMapping(value = "/toggleCell")
   public void toggleCell(@RequestBody Cell cell) throws IllegalArgumentException {
-    if (cell == null || cell.row() < 0 || cell.col() < 0) {
+    notNull(cell, "Null input provided");
+    if (cell.row() < 0 || cell.col() < 0) {
       throw new IllegalArgumentException("Invalid input: " + cell);
     }
     this.game.toggleCell(cell.row(), cell.col());

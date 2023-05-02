@@ -74,11 +74,11 @@ class GameModelImplTest {
             () -> new GameModelImpl(0, 0, random)
     );
     assertEquals(thrown.getMessage(), "Invalid value for rows or columns: 0,0");
-    thrown = assertThrows(
-            IllegalArgumentException.class,
+    NullPointerException nullExceptionThrown = assertThrows(
+            NullPointerException.class,
             () -> new GameModelImpl(1, 1, null)
     );
-    assertEquals(thrown.getMessage(), "Null value provided for random generator");
+    assertEquals(nullExceptionThrown.getMessage(), "Null value provided for random generator");
   }
 
   @Test

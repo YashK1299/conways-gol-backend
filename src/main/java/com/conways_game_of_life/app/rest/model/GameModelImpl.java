@@ -2,6 +2,8 @@ package com.conways_game_of_life.app.rest.model;
 
 import java.util.Random;
 
+import static org.apache.commons.lang3.Validate.notNull;
+
 /**
  * The GameModelImpl class implements the GameModel interface and
  * represents the implementation of a single game of Conway's Game of Life.
@@ -24,9 +26,7 @@ public class GameModelImpl implements GameModel {
    * @throws IllegalArgumentException if invalid input provided.
    */
   public GameModelImpl(int rows, int cols, Random random) throws IllegalArgumentException {
-    if (random == null) {
-      throw new IllegalArgumentException("Null value provided for random generator");
-    }
+    notNull(random, "Null value provided for random generator");
     if (rows <= 0 || cols <= 0) {
       throw new IllegalArgumentException("Invalid value for rows or columns: " + rows + "," + cols);
     }

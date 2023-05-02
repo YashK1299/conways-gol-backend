@@ -1,0 +1,273 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > GameModelImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.conways_game_of_life.app.rest.model</a>
+</div>
+
+<h1>Coverage Summary for Class: GameModelImpl (com.conways_game_of_life.app.rest.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GameModelImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (55/55)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$ej7yF4xs</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$fvI0VC1B</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$gQG7E1B9</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$hrccgsU5</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$on9iMgKI</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$piNxNOHW</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$pliy76hY</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$u5N7Janp</td>
+  </tr>
+  <tr>
+    <td class="name">GameModelImpl$MockitoMock$aQ954bNf$auxiliary$xImW1ySS</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (55/55)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.conways_game_of_life.app.rest.model;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.Random;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import static org.apache.commons.lang3.Validate.notNull;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;/**
+<i class="no-highlight">8</i>&nbsp; * The GameModelImpl class implements the GameModel interface and
+<i class="no-highlight">9</i>&nbsp; * represents the implementation of a single game of Conway&#39;s Game of Life.
+<i class="no-highlight">10</i>&nbsp; * It is represented by the civilization in the form of a boolean matrix game board
+<i class="no-highlight">11</i>&nbsp; * and the current integer population of the civilization.
+<i class="no-highlight">12</i>&nbsp; *
+<i class="no-highlight">13</i>&nbsp; * @see &lt;a href=&quot;https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life&quot;&gt;Conway&#39;s Game Of Life&lt;/a&gt;
+<i class="no-highlight">14</i>&nbsp; */
+<i class="no-highlight">15</i>&nbsp;public class GameModelImpl implements GameModel {
+<i class="no-highlight">16</i>&nbsp;  private final Random random;
+<i class="no-highlight">17</i>&nbsp;  private boolean[][] gameBoard;
+<i class="no-highlight">18</i>&nbsp;  private int population;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;  /**
+<i class="no-highlight">21</i>&nbsp;   * This constructs an instance of the GameModelImpl.
+<i class="no-highlight">22</i>&nbsp;   *
+<i class="no-highlight">23</i>&nbsp;   * @param rows   the number of rows in the game board (rows &gt; 0).
+<i class="no-highlight">24</i>&nbsp;   * @param cols   the number of columns in the game board (cols &gt; 0).
+<i class="no-highlight">25</i>&nbsp;   * @param random the random value generator used to randomize board at any moment.
+<i class="no-highlight">26</i>&nbsp;   * @throws IllegalArgumentException if invalid input provided.
+<i class="no-highlight">27</i>&nbsp;   */
+<b class="fc"><i class="no-highlight">28</i>&nbsp;  public GameModelImpl(int rows, int cols, Random random) throws IllegalArgumentException {</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;    notNull(random, &quot;Null value provided for random generator&quot;);</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;    if (rows &lt;= 0 || cols &lt;= 0) {</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;      throw new IllegalArgumentException(&quot;Invalid value for rows or columns: &quot; + rows + &quot;,&quot; + cols);</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">33</i>&nbsp;    this.gameBoard = new boolean[rows][cols];</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;    this.population = 0;</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;    this.random = random;</b>
+<i class="no-highlight">36</i>&nbsp;  }
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;  @Override
+<i class="no-highlight">39</i>&nbsp;  public void editBoardSize(int rows, int cols) throws IllegalArgumentException {
+<b class="fc"><i class="no-highlight">40</i>&nbsp;    if (rows &lt;= 0 || cols &lt;= 0) {</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;      throw new IllegalArgumentException(&quot;Invalid input: &quot; + rows + &quot;,&quot; + cols);</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">43</i>&nbsp;    this.gameBoard = new boolean[rows][cols];</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;    this.population = 0;</b>
+<i class="no-highlight">45</i>&nbsp;  }
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;  @Override
+<i class="no-highlight">48</i>&nbsp;  public boolean[][] getBoard() {
+<b class="fc"><i class="no-highlight">49</i>&nbsp;    return this.gameBoard;</b>
+<i class="no-highlight">50</i>&nbsp;  }
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;  @Override
+<i class="no-highlight">53</i>&nbsp;  public void randomBoard() {
+<b class="fc"><i class="no-highlight">54</i>&nbsp;    for (int i = 0; i &lt; this.gameBoard.length; i++)</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;      for (int j = 0; j &lt; this.gameBoard[0].length; j++) {</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        this.gameBoard[i][j] = this.random.nextBoolean();</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        this.population += this.gameBoard[i][j] ? 1 : 0;</b>
+<i class="no-highlight">58</i>&nbsp;      }
+<i class="no-highlight">59</i>&nbsp;  }
+<i class="no-highlight">60</i>&nbsp;
+<i class="no-highlight">61</i>&nbsp;  @Override
+<i class="no-highlight">62</i>&nbsp;  public void toggleCell(int row, int col) throws IllegalArgumentException {
+<b class="fc"><i class="no-highlight">63</i>&nbsp;    if (row &lt; 0 || row &gt;= this.gameBoard.length || col &lt; 0 || col &gt;= this.gameBoard[0].length) {</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;      throw new IllegalArgumentException(&quot;Invalid input: &quot; + row + &quot;,&quot; + col);</b>
+<i class="no-highlight">65</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">66</i>&nbsp;    this.gameBoard[row][col] = !this.gameBoard[row][col];</b>
+<b class="fc"><i class="no-highlight">67</i>&nbsp;    this.population += this.gameBoard[row][col] ? 1 : -1;</b>
+<i class="no-highlight">68</i>&nbsp;  }
+<i class="no-highlight">69</i>&nbsp;
+<i class="no-highlight">70</i>&nbsp;  private int getAliveNeighbours(int row, int col) {
+<b class="fc"><i class="no-highlight">71</i>&nbsp;    int aliveNeighbours = 0;</b>
+<b class="fc"><i class="no-highlight">72</i>&nbsp;    for (int i = -1; i &lt;= 1; i++)</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;      for (int j = -1; j &lt;= 1; j++)</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;        if ((row + i &gt;= 0 &amp;&amp; row + i &lt; this.gameBoard.length)</b>
+<i class="no-highlight">75</i>&nbsp;            &amp;&amp; (col + j &gt;= 0 &amp;&amp; col + j &lt; this.gameBoard[0].length))
+<b class="fc"><i class="no-highlight">76</i>&nbsp;          aliveNeighbours += this.gameBoard[row + i][col + j] ? 1 : 0;</b>
+<b class="fc"><i class="no-highlight">77</i>&nbsp;    aliveNeighbours -= this.gameBoard[row][col] ? 1 : 0; // Accounting for itself being counted as aliveNeighbours</b>
+<b class="fc"><i class="no-highlight">78</i>&nbsp;    return aliveNeighbours;</b>
+<i class="no-highlight">79</i>&nbsp;  }
+<i class="no-highlight">80</i>&nbsp;
+<i class="no-highlight">81</i>&nbsp;  @Override
+<i class="no-highlight">82</i>&nbsp;  public void nextGeneration() {
+<b class="fc"><i class="no-highlight">83</i>&nbsp;    int rows = this.gameBoard.length;</b>
+<b class="fc"><i class="no-highlight">84</i>&nbsp;    int cols = this.gameBoard[0].length;</b>
+<b class="fc"><i class="no-highlight">85</i>&nbsp;    boolean[][] next_gen = new boolean[rows][cols];</b>
+<b class="fc"><i class="no-highlight">86</i>&nbsp;    for (int row = 0; row &lt; rows; row++) {</b>
+<b class="fc"><i class="no-highlight">87</i>&nbsp;      for (int col = 0; col &lt; cols; col++) {</b>
+<b class="fc"><i class="no-highlight">88</i>&nbsp;        int aliveNeighbours = getAliveNeighbours(row, col);</b>
+<i class="no-highlight">89</i>&nbsp;        // Implementing Rules of Life:
+<b class="fc"><i class="no-highlight">90</i>&nbsp;        if (this.gameBoard[row][col] &amp;&amp; (aliveNeighbours &lt; 2)) {// Cell dies due to under-population</b>
+<b class="fc"><i class="no-highlight">91</i>&nbsp;          next_gen[row][col] = false;</b>
+<b class="fc"><i class="no-highlight">92</i>&nbsp;          this.population -= 1;</b>
+<b class="fc"><i class="no-highlight">93</i>&nbsp;        } else if (this.gameBoard[row][col] &amp;&amp; (aliveNeighbours &gt; 3)) { // Cell dies due to over-population</b>
+<b class="fc"><i class="no-highlight">94</i>&nbsp;          next_gen[row][col] = false;</b>
+<b class="fc"><i class="no-highlight">95</i>&nbsp;          this.population -= 1;</b>
+<b class="fc"><i class="no-highlight">96</i>&nbsp;        } else if (!this.gameBoard[row][col] &amp;&amp; (aliveNeighbours == 3)) { // New cell is born</b>
+<b class="fc"><i class="no-highlight">97</i>&nbsp;          next_gen[row][col] = true;</b>
+<b class="fc"><i class="no-highlight">98</i>&nbsp;          this.population += 1;</b>
+<i class="no-highlight">99</i>&nbsp;        } else // Remains the same
+<b class="fc"><i class="no-highlight">100</i>&nbsp;          next_gen[row][col] = this.gameBoard[row][col];</b>
+<i class="no-highlight">101</i>&nbsp;      }
+<i class="no-highlight">102</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">103</i>&nbsp;    this.gameBoard = next_gen;</b>
+<i class="no-highlight">104</i>&nbsp;  }
+<i class="no-highlight">105</i>&nbsp;
+<i class="no-highlight">106</i>&nbsp;  @Override
+<i class="no-highlight">107</i>&nbsp;  public boolean isGameOver() {
+<b class="fc"><i class="no-highlight">108</i>&nbsp;    return this.population == 0;</b>
+<i class="no-highlight">109</i>&nbsp;  }
+<i class="no-highlight">110</i>&nbsp;
+<i class="no-highlight">111</i>&nbsp;  @Override
+<i class="no-highlight">112</i>&nbsp;  public void resetBoard() {
+<b class="fc"><i class="no-highlight">113</i>&nbsp;    this.gameBoard = new boolean[this.gameBoard.length][this.gameBoard[0].length];</b>
+<b class="fc"><i class="no-highlight">114</i>&nbsp;    this.population = 0;</b>
+<i class="no-highlight">115</i>&nbsp;  }
+<i class="no-highlight">116</i>&nbsp;
+<i class="no-highlight">117</i>&nbsp;  @Override
+<i class="no-highlight">118</i>&nbsp;  public String toString() {
+<b class="fc"><i class="no-highlight">119</i>&nbsp;    final StringBuilder sb = new StringBuilder(&quot;Game Model:\n&quot;);</b>
+<b class="fc"><i class="no-highlight">120</i>&nbsp;    for (boolean[] rows : this.gameBoard) {</b>
+<b class="fc"><i class="no-highlight">121</i>&nbsp;      for (boolean cell : rows) {</b>
+<b class="fc"><i class="no-highlight">122</i>&nbsp;        if (cell)</b>
+<b class="fc"><i class="no-highlight">123</i>&nbsp;          sb.append(&quot; * &quot;);</b>
+<i class="no-highlight">124</i>&nbsp;        else
+<b class="fc"><i class="no-highlight">125</i>&nbsp;          sb.append(&quot; - &quot;);</b>
+<i class="no-highlight">126</i>&nbsp;      }
+<b class="fc"><i class="no-highlight">127</i>&nbsp;      sb.append(&quot;\n&quot;);</b>
+<i class="no-highlight">128</i>&nbsp;    }
+<b class="fc"><i class="no-highlight">129</i>&nbsp;    return sb.toString();</b>
+<i class="no-highlight">130</i>&nbsp;  }
+<i class="no-highlight">131</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-01 20:34</div>
+</div>
+</body>
+</html>

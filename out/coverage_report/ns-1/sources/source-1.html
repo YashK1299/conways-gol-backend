@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RestApiApplication</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.conways_game_of_life.app.rest</a>
+</div>
+
+<h1>Coverage Summary for Class: RestApiApplication (com.conways_game_of_life.app.rest)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RestApiApplication</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">RestApiApplication$$SpringCGLIB$$0</td>
+  </tr>
+  <tr>
+    <td class="name">RestApiApplication$$SpringCGLIB$$1</td>
+  </tr>
+  <tr>
+    <td class="name">RestApiApplication$$SpringCGLIB$$2</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.conways_game_of_life.app.rest;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.conways_game_of_life.app.rest.controller.GameController;
+<i class="no-highlight">4</i>&nbsp;import com.conways_game_of_life.app.rest.model.GameModel;
+<i class="no-highlight">5</i>&nbsp;import com.conways_game_of_life.app.rest.model.GameModelImpl;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.boot.SpringApplication;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.boot.autoconfigure.SpringBootApplication;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.context.annotation.Bean;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import java.util.Random;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;import static org.apache.commons.lang3.Validate.notNull;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;/**
+<i class="no-highlight">16</i>&nbsp; * The RestApiApplication class is the main entry point for the Conway&#39;s Game of Life REST API application.
+<i class="no-highlight">17</i>&nbsp; * It uses the Spring Boot framework to configure and start the REST API server.
+<i class="no-highlight">18</i>&nbsp; * It also supplies the {@link GameModel} to the {@link GameController}
+<i class="no-highlight">19</i>&nbsp; */
+<i class="no-highlight">20</i>&nbsp;@SpringBootApplication
+<b class="fc"><i class="no-highlight">21</i>&nbsp;public class RestApiApplication {</b>
+<i class="no-highlight">22</i>&nbsp;  static final int DEFAULT_GAME_BOARD_ROWS = 20;
+<i class="no-highlight">23</i>&nbsp;  static final int DEFAULT_GAME_BOARD_COLUMNS = 20;
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;  /**
+<i class="no-highlight">26</i>&nbsp;   * The main method starts the Spring Boot application and runs the REST API server.
+<i class="no-highlight">27</i>&nbsp;   *
+<i class="no-highlight">28</i>&nbsp;   * @param args command line arguments passed to the application.
+<i class="no-highlight">29</i>&nbsp;   */
+<i class="no-highlight">30</i>&nbsp;  public static void main(String[] args) {
+<b class="nc"><i class="no-highlight">31</i>&nbsp;    SpringApplication.run(RestApiApplication.class, args);</b>
+<i class="no-highlight">32</i>&nbsp;  }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;  /**
+<i class="no-highlight">35</i>&nbsp;   * This method creates a {@link GameModel} instance with default values for the game
+<i class="no-highlight">36</i>&nbsp;   * board rows, columns and random generator.
+<i class="no-highlight">37</i>&nbsp;   *
+<i class="no-highlight">38</i>&nbsp;   * @param randomGenerator random generator for model.
+<i class="no-highlight">39</i>&nbsp;   * @return The {@link GameModel} instance created with default values.
+<i class="no-highlight">40</i>&nbsp;   */
+<i class="no-highlight">41</i>&nbsp;  @Bean
+<i class="no-highlight">42</i>&nbsp;  public GameModel createGameModel(Random randomGenerator) {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;    notNull(randomGenerator, &quot;Null model provided for game&quot;);</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;    return new GameModelImpl(DEFAULT_GAME_BOARD_ROWS,</b>
+<i class="no-highlight">45</i>&nbsp;            DEFAULT_GAME_BOARD_COLUMNS,
+<i class="no-highlight">46</i>&nbsp;            randomGenerator);
+<i class="no-highlight">47</i>&nbsp;  }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;  /**
+<i class="no-highlight">50</i>&nbsp;   * This method creates a {@link Random} instance as a random value generator for the Game Model.
+<i class="no-highlight">51</i>&nbsp;   * This can be extended tin the future to use different random value generators.
+<i class="no-highlight">52</i>&nbsp;   * @return A random value generator to be used by the Game Model.
+<i class="no-highlight">53</i>&nbsp;   */
+<i class="no-highlight">54</i>&nbsp;  @Bean
+<i class="no-highlight">55</i>&nbsp;  public Random createRandomGenerator() {
+<b class="fc"><i class="no-highlight">56</i>&nbsp;    return new Random();</b>
+<i class="no-highlight">57</i>&nbsp;  }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-01 20:34</div>
+</div>
+</body>
+</html>
